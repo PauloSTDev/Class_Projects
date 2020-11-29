@@ -13,9 +13,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -26,9 +23,12 @@
   }
 }
 #layout{
-  border-top: 1px;
+  color: #ffffff;
+  border-top: 2px;
 	padding-top: 2em;
   font-style: italic;
+  padding-left: 100px;
+  background-color: #000000;
 }
 
 h1{
@@ -39,5 +39,8 @@ header{
   background-image: url('images/backgroundgp.jpg');
   background-size: cover;
 	background-position: top;
-  padding: 6em 0em 9em 0em;
+  padding: 8em 0em 10em 0em;
+}
+textfield{
+  border: "1px solid blue"
 }

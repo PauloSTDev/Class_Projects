@@ -5,7 +5,9 @@ import React, {useState} from 'react'
 import {
   Button,
   Grid,
-  TextField
+  TextField,
+  Checkbox,
+  InputBase
 } from '@material-ui/core';
 
 
@@ -13,7 +15,10 @@ function App() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
+  const [msg, setMsg] = useState("")
+  const [lembreme, setLembreme] = useState(false)
+
+
   const login =()=> {
 
     firebase
@@ -21,11 +26,19 @@ function App() {
       .signInWithEmailAndPassword(email, password)
 
       .then((retorno) => {
-        console.log(retorno.user.uid)
+        setMsg("Usuário logado!")
+        
+        if (lembreme ===true){
+          localStorage.setItem("email", email)
+          localStorage.setItem("password", password)
+        }else{
+          localStorage.removeItem("email")
+          localStorage.removeItem("password")
+        }
       })
       .catch(
         (erro) => {
-          console.log(erro)
+          msg("Usuário ou senha inválidos!")
       }
       )
   }
@@ -58,21 +71,34 @@ function App() {
               />
             </Grid>
             <Grid item sm={12} xs={12} align="center">
+              <div>
+              <Checkbox
+              checked={lembreme}
+              onChange={(e) =>setLembreme(e.target.checked)}
+              spacing={1}
+              color="-moz-initial"
+              inputProps={{ 'aria-label': 'primary checkbox' }}
+            /> Lembre-me
+              </div>
+            
             <Button
             onClick={login}
             variant="contained"
-            color="primary">
-              Logar
+            
+            style={{color: "white", backgroundColor: "black"}}>
+              <b>
+                Logar
+              </b>
+              
             </Button>
             </Grid>
           </Grid>
-          <footer>
-            <div id="layout">
-          @Projeto Agro GP. Todos os direitos reservados
-        </div>
+          
+        </header><footer>
+          <div id="layout">
+            @Projeto Agro GP. Todos os direitos reservados
+          </div>
           </footer>
-        
-        </header>
       </>
 );
 }
