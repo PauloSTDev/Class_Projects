@@ -30,17 +30,35 @@
   padding-left: 100px;
   background-color: #000000;
 }
+#msg{
+  font-weight: 1000;
+  color: #ad1111;
+  font-style: italic;
+}
 
 h1{
   padding-top: 2em;
   font-style: italic;
 }
-header{
+#header{
   background-image: url('images/backgroundgp.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
-	background-position: top;
+  background-position: top;
+  background-attachment: fixed;
   padding: 8em 0em 10em 0em;
 }
 textfield{
   border: "1px solid blue"
+}
+body{
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-image: url('images/backgroundgp.jpg');
+}
+h2{
+  margin-left: 10px;
+  padding: 40px;
+  font-size: 25px;
 }
