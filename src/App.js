@@ -12,13 +12,13 @@ export default function App(){
 
   useLayoutEffect(()=> {
     firebase
-    .auth()
-    .onAuthStateChanged(user => {
-    if (user.uid !== null) {
-      setUser(user.uid)
-    }else{
-      setUser(null)
-    }
+      .auth()
+      .onAuthStateChanged(user => {
+      if (user !== null) {
+        setUser(user.uid)
+      }else{
+        setUser(null)
+      }
     })
   }, [])
 

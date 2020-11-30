@@ -1,18 +1,7 @@
 import React from 'react'
 import {
-  AppBar,
-  Grid,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton
-  
+  Grid
 } from '@material-ui/core';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MenuIcon from '@material-ui/icons/Menu';
-import {useHistory} from 'react-router-dom'
-import firebase from '../../services/FirebaseConnect'
-
 
 export default function Opcoes(){
   return(

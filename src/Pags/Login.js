@@ -7,8 +7,7 @@ import {
   Button,
   Grid,
   TextField,
-  Checkbox,
-  InputBase
+  Checkbox
 } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableCell from '@material-ui/core/TableCell';

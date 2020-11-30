@@ -1,16 +1,15 @@
-import React, { useState, useLayoutEffect} from 'react'
+import React, { useState} from 'react'
 import {
   AppBar,
   Grid,
   Toolbar,
-  Typography,
   Button,
   MenuList,
   MenuItem
   
 } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {useHistory, HashRouter, Switch, Route, Redirect} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import firebase from '../services/FirebaseConnect'
 import Opcoes from './screens/Opcoes';
 import Pilares from './screens/Pilares'
@@ -62,25 +61,25 @@ export default function Menu(){
           </MenuList>
         </Grid>
         <Grid item sm={12} xs={12}>
-            {screen ==0 &&
+            {screen ===0 &&
             <>
             <Opcoes setScreen={setScreen}/>
             </>}
-            {screen ==1 &&
+            {screen ===1 &&
             <>
             <Pilares setScreen={setScreen}/>
             </>}
-            {screen ==2 &&
+            {screen ===2 &&
             <>
             <Contato setScreen={setScreen}/>
             </>
             }
-            {screen ==3 &&
+            {screen ===3 &&
             <>
             <Registros setScreen={setScreen}/>
             </>
             }
-            {screen ==4 &&
+            {screen ===4 &&
             <>
             <Recados setScreen={setScreen}/>
             </>
