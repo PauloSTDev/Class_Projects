@@ -1,20 +1,36 @@
-import React, { Component } from 'react'
+import React, {useLayoutEffect, useState} from 'react'
 import {HashRouter, Switch, Route} from 'react-router-dom'
 import Login from './Pags/Login'
 import Menu from './Pags/Menu'
 import Opcoes from './Pags/screens/Opcoes'
+import firebase from './services/FirebaseConnect'
+
 
 export default function App(){
+
+  const [user, setUser] = useState (null)
+
+  useLayoutEffect(()=> {
+    firebase
+    .auth()
+    .onAuthStateChanged(user => {
+    if (user.uid !== null) {
+      setUser(user.uid)
+    }else{
+      setUser(null)
+    }
+    })
+  }, [])
 
   const PrivateRoute = ({ component: Component, ...rest })=> {
     return <Route
     render={(props=> {
-      let isAuthenticated = sessionStorage.getItem("uuid")
-      if (isAuthenticated) {
+      if (user) {
         return <Component {...props}/>
       } else{
         return <Login/>
       }
+
     })}
     />
   }
