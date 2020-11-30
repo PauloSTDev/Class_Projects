@@ -31,6 +31,8 @@ export default function App(){
           <div id="layout">
             Nome: Paulo Afonso Della Mêa dos Santos - Email: afonso.mea@gmail.com
           </div>
+          
   </footer>
+  
   </div>  )
 }

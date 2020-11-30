@@ -14,8 +14,8 @@ import {useHistory, HashRouter, Switch, Route, Redirect} from 'react-router-dom'
 import firebase from '../services/FirebaseConnect'
 import Opcoes from './screens/Opcoes';
 import Pilares from './screens/Pilares'
-import EnvioDeDados from './screens/EnvioDeDados'
-import Anotacoes from './screens/Anotacoes'
+import Contato from './screens/Contato'
+import Registros from './screens/Registros'
 export default function Menu(){
   
   const [screen, setScreen] = useState(0)
@@ -39,11 +39,6 @@ export default function Menu(){
       <AppBar position="sticky" style={{backgroundColor: "transparent", color: "black"}}>
         <Toolbar>
           <Grid container spacing={1}>
-            <Grid item sm={12} xs={12}>
-              <Button>
-                Opções
-              </Button>
-            </Grid>
           </Grid>
             <Button
               onClick={logoff}
@@ -61,7 +56,7 @@ export default function Menu(){
             <MenuItem onClick={()=> setScreen(0)}> Sobre a Consultoria</MenuItem>
             <MenuItem onClick={()=> setScreen(1)}> Nossos Pilares</MenuItem>
             <MenuItem onClick={()=> setScreen(2)}> Deixar Contato</MenuItem>
-            <MenuItem onClick={()=> setScreen(3)}> Anotações</MenuItem>
+            <MenuItem onClick={()=> setScreen(3)}> Registros</MenuItem>
           </MenuList>
         </Grid>
         <Grid item sm={12} xs={12}>
@@ -75,12 +70,12 @@ export default function Menu(){
             </>}
             {screen ==2 &&
             <>
-            <EnvioDeDados/>
+            <Contato setScreen={setScreen}/>
             </>
             }
             {screen ==3 &&
             <>
-            <Anotacoes/>
+            <Registros setScreen={setScreen}/>
             </>
             }
         </Grid>

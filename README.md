@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Projeto feito pelo aluno Paulo A fonso Della Mêa dos Santos
+React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
