@@ -31,6 +31,9 @@ export default function App(){
           <div id="layout">
             Nome: Paulo Afonso Della Mêa dos Santos - Email: afonso.mea@gmail.com
           </div>
+          <div id="layout">
+          link GitHub: https://github.com/SadGitHubb/Class_Projects.git
+          </div>
           
   </footer>
   

@@ -15,8 +15,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import DeleteIcon from '@material-ui/icons/Delete'
 export default function Opcoes(props){
+
+  const excluir = (item) =>{
+    firebase
+    .database()
+    .ref(`/Contatos/${item.id}`)
+    .remove()
+  }
 
   const [lista, setLista] = useState([])
 
@@ -26,15 +33,19 @@ export default function Opcoes(props){
       .database()
       .ref(`/Contatos`)
       .on('value',snapchot =>{
-        let dados = snapchot.val()
-        const keys =Object.keys(dados)
-        const lista = keys.map((key)=>{
-          return {...dados[key], id: key}
-        })
-        console.log(lista)
-        setLista(lista)
+        if(snapchot.val()){
+          let dados = snapchot.val()
+          const keys =Object.keys(dados)
+          const lista = keys.map((key)=>{
+            return {...dados[key], id: key}
+          })
+          console.log(lista)
+          setLista(lista)
+        }else{
+          setLista([])
+        }
       })
-  }, [])
+    }, [])
 
 
   return(
@@ -54,9 +65,18 @@ export default function Opcoes(props){
           {lista.map((item, key)=>{
             return <TableRow key={key}>
               <TableCell component="th" scope="row">{item.nome}</TableCell>
-          <TableCell align="right">{item.mensagem}</TableCell>
               <TableCell align="right">{item.email}</TableCell>
               <TableCell align="right">{item.assunto}</TableCell>
+              <TableCell align="right">{item.mensagem}</TableCell>
+              <TableCell align="right">
+                <Button
+                onClick={()=> excluir(item)}
+                variant="contained"
+                startIcon={<DeleteIcon/>}
+                style={{color: "white", backgroundColor: "black"}}>
+                  Excluir
+                </Button>
+              </TableCell>
             </TableRow>
           }
           )}

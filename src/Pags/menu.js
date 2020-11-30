@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect} from 'react'
 import {
   AppBar,
   Grid,
@@ -16,6 +16,7 @@ import Opcoes from './screens/Opcoes';
 import Pilares from './screens/Pilares'
 import Contato from './screens/Contato'
 import Registros from './screens/Registros'
+import Recados from './screens/Recados'
 export default function Menu(){
   
   const [screen, setScreen] = useState(0)
@@ -57,16 +58,17 @@ export default function Menu(){
             <MenuItem onClick={()=> setScreen(1)}> Nossos Pilares</MenuItem>
             <MenuItem onClick={()=> setScreen(2)}> Deixar Contato</MenuItem>
             <MenuItem onClick={()=> setScreen(3)}> Registros</MenuItem>
+            <MenuItem onClick={()=> setScreen(4)}> Recados</MenuItem>
           </MenuList>
         </Grid>
         <Grid item sm={12} xs={12}>
             {screen ==0 &&
             <>
-            <Opcoes/>
+            <Opcoes setScreen={setScreen}/>
             </>}
             {screen ==1 &&
             <>
-            <Pilares/>
+            <Pilares setScreen={setScreen}/>
             </>}
             {screen ==2 &&
             <>
@@ -76,6 +78,11 @@ export default function Menu(){
             {screen ==3 &&
             <>
             <Registros setScreen={setScreen}/>
+            </>
+            }
+            {screen ==4 &&
+            <>
+            <Recados setScreen={setScreen}/>
             </>
             }
         </Grid>

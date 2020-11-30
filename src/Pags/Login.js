@@ -10,9 +10,38 @@ import {
   Checkbox,
   InputBase
 } from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 
 
 function Login() {
+
+  useLayoutEffect(()=> {
+
+    firebase
+      .database()
+      .ref(`/Contatos`)
+      .on('value',snapchot =>{
+        if(snapchot.val()){
+          let dados = snapchot.val()
+          const keys =Object.keys(dados)
+          const lista = keys.map((key)=>{
+            return {...dados[key], id: key}
+          })
+          console.log(lista)
+          setLista(lista)
+        }else{
+          setLista([])
+        }
+      })
+    }, [])
+
+  const [lista, setLista] = useState([])
 
   let history = useHistory();
   const [email, setEmail] = useState("")
@@ -113,12 +142,24 @@ function Login() {
             </Button>
             </Grid>
           </Grid>
+        <div>
+          <h1 align="left">
+            Mensagens dos usuários
+          </h1>
+          <h2>
+          <TableContainer >
+            
+          <Table>
+            {lista.map((item, key)=>{
+                return <TableRow key={key}><TableCell>{item.mensagem}</TableCell></TableRow>
+            }
+            )}
+          </Table>
+          </TableContainer>
+          </h2>
+        </div>
           
-        </header><footer>
-          <div id="layout">
-            @Projeto Agro GP. Todos os direitos reservados
-          </div>
-          </footer>
+        </header>
       </>
 );
 }
