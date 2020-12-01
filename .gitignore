@@ -9,8 +9,6 @@
 /coverage
 /src/services/FirebaseConfig.js
 
-# production
-/build
 
 # misc
 .DS_Store
